@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Detector & File Upload</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Animal Detector & File Upload</h1>
+        
+        <div class="boxes-container">
+            <!-- Animal Selection Box -->
+            <div class="box">
+                <h2>Select an Animal</h2>
+                <select id="animalSelect" onchange="showAnimal()">
+                    <option value="">Choose an animal...</option>
+                    <option value="cat">Cat</option>
+                    <option value="dog">Dog</option>
+                    <option value="elephant">Elephant</option>
+                </select>
+                <div id="animalImage" class="animal-image"></div>
+            </div>
+
+            <!-- File Upload Box -->
+            <div class="box">
+                <h2>Upload a File</h2>
+                <div class="upload-area" id="uploadArea">
+                    <input type="file" id="fileInput" accept="*/*" onchange="handleFileUpload()">
+                    <label for="fileInput" class="upload-label">
+                        <span class="upload-icon">📁</span>
+                        <span>Click to upload or drag & drop</span>
+                    </label>
+                </div>
+                <div id="fileInfo" class="file-info"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
