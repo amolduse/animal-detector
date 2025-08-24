@@ -1,0 +1,24 @@
+[Unit]
+Description=Animal Detector Flask App (Gunicorn)
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/var/www/animal-detector
+Environment="PATH=/var/www/animal-detector/venv/bin"
+Environment="SECRET_KEY=your-production-secret-key-change-this"
+ExecStart=/var/www/animal-detector/venv/bin/gunicorn --config gunicorn.conf.py app_production:app
+ExecReload=/bin/kill -s HUP $MAINPID
+Restart=always
+RestartSec=3
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/www/animal-detector/uploads /var/www/animal-detector/logs
+
+[Install]
+WantedBy=multi-user.target
